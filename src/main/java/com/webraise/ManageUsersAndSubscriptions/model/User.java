@@ -8,7 +8,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "users")
 public class User {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,6 +18,13 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Subscription> subscriptions;
 
+    public User() {
+    }
+
+    public User(Long userId) {
+        this.id = userId;
+    }
+
     public Long getId() {
         return id;
     }
@@ -26,11 +33,11 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
+    public String getName() {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setName(String username) {
         this.username = username;
     }
 

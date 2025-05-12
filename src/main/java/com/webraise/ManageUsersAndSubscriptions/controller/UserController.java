@@ -1,6 +1,7 @@
 package com.webraise.ManageUsersAndSubscriptions.controller;
 
 import com.webraise.ManageUsersAndSubscriptions.model.User;
+import com.webraise.ManageUsersAndSubscriptions.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +32,6 @@ public class UserController {
         if (user.isPresent()) {
             User updatedUser = user.get();
             updatedUser.setName(userDetails.getName());
-            updatedUser.setEmail(userDetails.getEmail());
             return ResponseEntity.ok(userRepository.save(updatedUser));
         }
         return ResponseEntity.notFound().build();
