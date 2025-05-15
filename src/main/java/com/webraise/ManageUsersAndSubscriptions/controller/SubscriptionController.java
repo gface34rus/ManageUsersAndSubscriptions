@@ -26,11 +26,13 @@ public class SubscriptionController {
         return subscriptionRepository.save(subscription);
     }
 
+
     @GetMapping
     public List<Subscription> getUserSubscriptions(@PathVariable Long userId) {
         logger.info("Retrieving subscriptions for userId: {}", userId);
         return subscriptionRepository.findByUserId(userId);
     }
+
 
     @DeleteMapping("/{sub_id}")
     public ResponseEntity<Void> deleteSubscription(@PathVariable Long userId, @PathVariable Long sub_id) {
@@ -38,6 +40,7 @@ public class SubscriptionController {
         subscriptionRepository.deleteById(sub_id);
         return ResponseEntity.noContent().build();
     }
+
 
     @GetMapping("/top")
     public List<Subscription> getTopSubscriptions() {
